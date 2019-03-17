@@ -1,6 +1,9 @@
 package Pair;
 
+import sun.jvm.hotspot.debugger.win32.coff.COMDATSelectionTypes;
+
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 
 /**
@@ -11,6 +14,25 @@ import java.util.Collections;
  * And a minmax method that returns a pair containing the largest and smallest items from the array list
  */
 public class Arrays {
-    public static <___> Pair<E> firstLast(ArrayList<___> a) {
+
+
+    public static <E extends Comparable> Pair<E> firstLast(ArrayList<E> list) {
+        return new Pair(list.get(0), list.get(list.size()-1));
+    }
+
+
+    public static<E extends Comparable> E min(ArrayList<E> list) {
+        Collections.sort(list);
+        return list.get(0);
+    }
+
+    public static<E extends Comparable> E max(ArrayList<E> list) {
+        Collections.sort(list);
+        return list.get(list.size()-1);
+    }
+
+
+    public static<E extends Comparable> Pair<E> minMax(ArrayList<E> list) {
+        return new Pair<E>(min(list), max(list));
     }
 }
